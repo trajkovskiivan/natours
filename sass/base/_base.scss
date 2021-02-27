@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {  /* the * sets style to each and every element on the page */
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */ /*Borders or paddings are no longer added to the total width or height of the box */
+    box-sizing: inherit;
+}
+
+html { 
+    /* The root font size is rendered in the html */
+    /*  Given that the default font size is 16px, and we want the default rem font size to be 10px, se divide and we set it up like this, and this solves the problem if user sets the browser default font size and zoom in on the page */
+    /* font-size: 10px; */
+    // We keep it in _base since it defines what 1rem is
+    font-size: 62.5%;  // 1rem = 10px    10px/16px = 62.5%
+
+    // @include respond-phone {
+    //     font-size: 50%;
+    // }
+
+    // @include respond(phone) {
+    //     font-size: 50%;
+    // }
+
+    
+    @include respond(tab-land) {
+        font-size: 56.25%;  // 1rem = 9px, 89/16 = 56.25%
+    }
+    
+    @include respond(tab-port) {
+        font-size: 50%;  //  1rem = 8px, 8/16 = 50%
+    }
+    @include respond(phone) {
+        font-size: 31%;  //  1rem = 5px, 5/16 = 50%
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%;   // 1 rem = 12, 12/16 = 75%
+    }
+}
+
+body { 
+    box-sizing: border-box; /* put it here so we can use inheritance */
+    padding: 3rem;  /* converts it in 30px in accordance with the root font size */
+
+    @include respond(tab-port) {
+        padding: 0;  
+    }
+}
